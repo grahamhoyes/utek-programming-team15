@@ -1,5 +1,5 @@
-from solution import parser, Part1
-
+from solution import parser, Part1, part_2A, part_2B
+import re
 outputdir = 'output'
 
 part1data = parser.parse1('input')
@@ -29,4 +29,23 @@ with open(outputdir + '/1c.out', 'a') as out1c:
             out1c.write(Part1.PermutationDecrypt(e[1], e[2]) + '\n')
             
 ## Dataset for Part 2
-parser.parse2('ptb.train.txt')
+parser.parse2ds('ptb.train.txt')
+with open('dataset_spaceless.txt', 'r') as fh:
+    dataset = fh.read()
+counts = part_2A.get_count(dataset)
+
+part2data = parser.parse2('input')
+with open(outputdir + '/2a.out', 'a') as out2a:
+    for e in part2data:
+        val = part_2A.parse_input(e[1])
+        if e[0] == 'PTB':
+            out2a.write((str(counts[val]) if val in counts else str(0)) + '\n')
+        else:
+            thesecounts = part_2A.get_count(re.sub('[^a-zA-Z]', '', e[0]))
+            out2a.write((str(thesecounts[val]) if val in thesecounts else str(0)) + '\n')
+
+part2bdata = parser.parse2b('input')
+with open(outputdir + '/2b.out', 'a') as out2b:
+    for e in part2bdata:
+        val = part_2B.part_2B(counts, e[0], e[1])
+        out2b.write(str(val) + '\n')
