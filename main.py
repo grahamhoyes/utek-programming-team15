@@ -49,3 +49,17 @@ with open(outputdir + '/2b.out', 'a') as out2b:
     for e in part2bdata:
         val = part_2B.part_2B(counts, e[0], e[1])
         out2b.write(str(val) + '\n')
+        
+with open('input/3a.in', 'r') as fh:
+    import re
+    res = []
+    data = fh.read().upper().split('\n')
+    for e in data:
+        if e == '': continue
+        j= re.sub('[^a-zA-Z \|]', '', e)         # Remove non-alpha characters
+        res.append(j)
+        
+with open(outputdir + '/3a.out', 'a') as out3a:
+    for e in res:
+        val = SimpleCrack.SimpleCrack(counts, e)
+        out3a.append(str(val[0]) + '|' + val[1])
