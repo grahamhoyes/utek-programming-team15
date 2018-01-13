@@ -36,7 +36,9 @@ def parse2(ds):
         train = re.sub('N |<unk> ', '', rawtrain)       # Remove all cases of N or <unk> followed by a space
         train = re.sub(' N| <unk>', '', train)          # Remove all cases of N or <unk> preceeded by a space
         train = re.sub('[^a-zA-Z ]', '', train)         # Remove all non-alpha characters, preserve spaces
-        train = re.sub('  +', ' ', train)
+        #train = re.sub('  +', ' ', train)
+        #train = re.sub('^ +| +$', '', train)            # Remove spaces at the start or end of the dataset
+        train = re.sub(' ', '', train)                  # Remove all spaces
         train = train.upper()
     with open('dataset.txt', 'w') as fh:
         fh.write(train)

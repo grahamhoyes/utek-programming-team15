@@ -1,5 +1,8 @@
 def get_count(dataset):
-    
+    """
+        Input: string dataset
+        Output: dictionary of counts
+    """
     count_dict = {}
     
     for i in range(len(dataset)):
@@ -33,6 +36,10 @@ def get_count(dataset):
     return count_dict
 
 def parse_input(input):
+    """
+        Input: string
+        Return: string
+    """
     clean = ""
     for i in range(len(input)):
         if ord(input[i]) < 65 or ord(input[i]) > 90:
@@ -43,16 +50,16 @@ def parse_input(input):
 
 
 if  __name__ == "__main__":
-    with open("ptb.train.txt") as file:  
+    with open("../dataset.txt") as file:  
         data = file.read() 
     
     #data = "HELLO WORLD"
     
-    clean_input = parse_input("THE")
+    #clean_input = parse_input("THE")
 
     counts = get_count(data)
     
-    clean_input = "the"
+    clean_input = "TION"
     
     print(clean_input)
     if counts.__contains__(clean_input):
