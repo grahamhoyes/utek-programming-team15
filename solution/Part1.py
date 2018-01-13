@@ -39,7 +39,7 @@ def BlockEncrypt(k, text):
     #Work through each character of the text
     for n in range(len(text)):
         #Skip if there is a space (no need to encrypt space)
-        if text[n] < 65 or text[n] > 90:
+        if ord(text[n]) < 65 or ord(text[n]) > 90:
             ciphertext += text[n]
         #Use simple step encryption to encrypt each individual alphabetic character
         else:
