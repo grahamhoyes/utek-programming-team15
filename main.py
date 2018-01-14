@@ -56,8 +56,8 @@ with open('input/3a.in', 'r') as fh:
     data = fh.read().upper().split('\n')
     for e in data:
         if e == '': continue
-        j= re.sub('[^a-zA-Z \|]', '', e)         # Remove non-alpha characters
-        res.append(j)
+        #j= re.sub('[^a-zA-Z0-9 \|\'\"!@#$%^&*()_+\-,\.;=]', '', e)         # Remove non-alpha characters
+        res.append(e)
         
 with open(outputdir + '/3a.out', 'a') as out3a:
     for e in res:
