@@ -1,4 +1,4 @@
-import part_2B
+from solution import part_2B
 
 def SimpleCrack(counts, ciphertext):
     

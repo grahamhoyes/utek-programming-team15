@@ -1,4 +1,4 @@
-from solution import parser, Part1, part_2A, part_2B
+from solution import parser, Part1, part_2A, part_2B, SimpleCrack
 import re
 outputdir = 'output'
 
@@ -62,4 +62,4 @@ with open('input/3a.in', 'r') as fh:
 with open(outputdir + '/3a.out', 'a') as out3a:
     for e in res:
         val = SimpleCrack.SimpleCrack(counts, e)
-        out3a.append(str(val[0]) + '|' + val[1])
+        out3a.write(str(val[0]) + ' | ' + val[1] + '\n')
